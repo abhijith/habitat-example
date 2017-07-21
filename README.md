@@ -21,6 +21,10 @@
 		$ sudo useradd -g hab hab
 		$ sudo hab svc start <origin>/hello
 
+* Apply config change
+
+		$ echo 'version = 2' | sudo hab config apply hello.default 1
+
 * Build docker image
 
 		$ sudo hab pkg export docker <origin>/hello

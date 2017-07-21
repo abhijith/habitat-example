@@ -5,7 +5,7 @@ pkg_build_deps=(core/go)
 pkg_origin=abhijith
 pkg_maintainer='Abhijith Gopal'
 pkg_expose=()
-pkg_svc_run="hello"
+pkg_svc_run="hello ${pkg_svc_config_path}/greet"
 pkg_bin_dirs=(bin)
 
 do_download() {
@@ -28,11 +28,11 @@ do_build() {
     echo "copying source code into cache-path: $CACHE_PATH"
 
     cp -v $PLAN_CONTEXT/hello.go $CACHE_PATH/
-    pushd $CACHE_PATH/
+    cd $CACHE_PATH/
     go build -o hello
-    popd
 }
 
 do_install() {
     cp -v $CACHE_PATH/$pkg_name ${pkg_prefix}/bin
+    echo $pkg_svc_config_path
 }
