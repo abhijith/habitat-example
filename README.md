@@ -8,6 +8,9 @@
 
 		$ git clone https://github.com/abhijith/habitat-example.git
 		$ cd habitat-example
+		$ vagrant up
+		$ vagrant ssh
+		$ cd code
 		$ hab pkg build .
 
 * Install
@@ -23,7 +26,8 @@
 
 * Apply config change
 
-		$ echo 'version = 2' | sudo hab config apply hello.default 1
+		$ vagrant ssh # in a new terminal
+		$ echo 'version = 2' | sudo hab config apply hello.default 1 
 
 * Build docker image
 
